@@ -1,89 +1,89 @@
-package  pratica.domain ;
+package pratica.domain;
 
-import  java.io.Serializable ;
-import  java.util.Objects ;
+import java.io.Serializable;
+import java.util.Objects;
 
-import  javax.persistence.EmbeddedId ;
-import  javax.persistence.Entity ;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 
-@Entidade
-public  class  ItemPedido  implementa  Serializable {
-	private  static  final  long serialVersionUID =  1L ;
+@Entity
+public class ItemPedido implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@EmbeddedId
-	 id ItemPedidoPK privado =  novo  ItemPedidoPK (); // id é atributo composto, então utiliza-se @Embeddable na classe ItemPedidoPK
+	private ItemPedidoPK id = new ItemPedidoPK(); //id é atributo composto, então utiliza-se @Embeddable na classe ItemPedidoPK
 	
-	 desconto duplo privado ;
-	 quantidade inteira privada ;
-	 Duplo preco privado ;
+	private Double desconto;
+	private Integer quantidade;
+	private Double preco;
 	
-	public  ItemPedido () {
+	public ItemPedido() {
 	}
 
-	public  ItemPedido ( Pedido  pedido , Produto  produto , Double  desconto , Integer  quantidade , Double  preco ) {
-		super ();
-		id . setPedido (pedido);
-		id . setProduto (produto);
-		isso . desconto = desconto;
-		isso . quantidade = quantidade;
-		isso . preco = preco;
+	public ItemPedido(Pedido pedido, Produto produto, Double desconto, Integer quantidade, Double preco) {
+		super();
+		id.setPedido(pedido);
+		id.setProduto(produto);
+		this.desconto = desconto;
+		this.quantidade = quantidade;
+		this.preco = preco;
 	}
 
-	 Pedido  getPedido público () {
-		id de retorno . getPedido ();
+	public Pedido getPedido() {
+		return id.getPedido();
 	}
 	
-	public  Produto  getProduto () {
-		id de retorno . getProduto ();
+	public Produto getProduto() {
+		return id.getProduto();
 	}
 	
-	public  ItemPedidoPK  getId () {
+	public ItemPedidoPK getId() {
 		return id;
 	}
 
-	public  void  setId ( ItemPedidoPK  id ) {
-		isso . id = id;
+	public void setId(ItemPedidoPK id) {
+		this.id = id;
 	}
 
-	public  Double  getDesconto () {
+	public Double getDesconto() {
 		return desconto;
 	}
 
-	public  void  setDesconto ( Double  desconto ) {
-		isso . desconto = desconto;
+	public void setDesconto(Double desconto) {
+		this.desconto = desconto;
 	}
 
-	public  Integer  getQuantidade () {
-		quantidade de retorno ;
+	public Integer getQuantidade() {
+		return quantidade;
 	}
 
-	public  void  setQuantidade ( quantidade Integer  ) {
-		isso . quantidade = quantidade;
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
 	}
 
-	public  Double  getPreco () {
+	public Double getPreco() {
 		return preco;
 	}
 
-	public  void  setPreco ( Double  preco ) {
-		isso . preco = preco;
+	public void setPreco(Double preco) {
+		this.preco = preco;
 	}
 
-	@Sobrepor
-	public  int  hashCode () {
-		retornar  objetos . hash (id);
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
-	@Sobrepor
-	public  boolean  equals ( Object  obj ) {
-		if ( this  == obj)
-			return  true ;
-		if (obj ==  null )
-			return  false ;
-		if (getClass () ! = obj . getClass ())
-			return  false ;
-		ItemPedido outro = ( ItemPedido ) obj;
-		retornar  objetos . igual (id, outro . id);
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ItemPedido other = (ItemPedido) obj;
+		return Objects.equals(id, other.id);
 	}
 	
 
